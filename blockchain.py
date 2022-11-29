@@ -1,6 +1,4 @@
 import datetime
-import random
-import math
 import merkle_tree
 import hashlib
 
@@ -79,7 +77,6 @@ class Blockchain:
                     '0000000000000000000000000000000000000000000000000000000000000000')
         else:
             return print("Block could not be added to the blockchain!")
-        print("Block has been added to the blockchain!")
 
     def check_chain_validity(self):
         if len(self.blocks) >= 2:
@@ -108,10 +105,9 @@ class Blockchain:
             print("Blockchain is valid!")
             return True
 
-    @staticmethod
-    def create_copy(bc):
-        blockchain_copy = Blockchain(bc.name)
-        blockchain_copy.blocks = bc.blocks.copy()
-        blockchain_copy.block_height = bc.block_height
-        blockchain_copy.valid = bc.valid
+    def create_copy(self):
+        blockchain_copy = Blockchain(self.name)
+        blockchain_copy.blocks = self.blocks.copy()
+        blockchain_copy.block_height = self.block_height
+        blockchain_copy.valid = self.valid
         return blockchain_copy

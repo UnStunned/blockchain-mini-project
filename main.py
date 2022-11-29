@@ -35,11 +35,10 @@ for i in network_1.peers:
     if i != block_1.miner:
         i.validate_block(block_1, nonce, targ)
 
-del i
-
 # peer 1 appending block to blockchain after validation
 if network_1.approvals == len(network_1.peers):
     network_1.peers[0].local_blockchain.append_block(block_1)
+    print(f'Block has been added to the local blockchain of {network_1.peers[0].ip_address}')
 
 # checking chain validity
 network_1.peers[0].local_blockchain.check_chain_validity()
@@ -49,10 +48,12 @@ network_1.add_peer(network.Peer('192.168.1.104'))
 
 # propogation of changes in blockchain
 for i in network_1.peers:
-    if i != block_1.miner:
+    if i.ip_address != block_1.miner:
         i.local_blockchain.append_block(block_1)
-
-del i
+        print(f'Block has been added to the local blockchain of {i.ip_address}')
 
 # updating the global copy of blockchain
 network_1.blockchain = network_1.peers[0].local_blockchain.create_copy()
+
+# deallocation of redundant variables as these variable are already present on some or the other node
+del i, block_1, targ, nonce, t_1, t_2, t_3, peers_1

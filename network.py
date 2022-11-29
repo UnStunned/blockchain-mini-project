@@ -28,7 +28,7 @@ class Peer:
             nonce)
         hashed_value = hashlib.sha256((hashlib.sha256(to_be_hashed.encode()).hexdigest()).encode()).hexdigest()
         if hashed_value > targ:
-            print('Block is valid!')
+            print(f'Block has been validated by {self.ip_address}!')
             self.network.approvals += 1
         else:
             print('Block is invalid!')
@@ -48,7 +48,7 @@ class Network:
         self.connected_ips = list(map(lambda x: x.ip_address, self.peers))
         for i in self.peers:
             i.connected_to = self.find_connections(i.ip_address)
-            i.local_blockchain = blockchain.create_copy(blockchain)
+            i.local_blockchain = blockchain.create_copy()
             i.set_network(self)
         self.approvals = 0
         print(f'Network created for {self.network_for}!')
@@ -63,7 +63,7 @@ class Network:
             self.peers[-1].connected_to = (self.find_connections(self.peers[-1].ip_address))
             for i in range(len(self.peers) - 2):
                 self.peers[i].connected_to.append(self.peers[-1].ip_address)
-            self.peers[-1].local_blockchain = self.blockchain.create_copy(self.blockchain)
+            self.peers[-1].local_blockchain = self.blockchain.create_copy()
 
         else:
             peer = Peer(ip_address, peer)
@@ -72,7 +72,7 @@ class Network:
             self.peers[-1].connected_to = (self.find_connections(ip_address))
             for i in range(len(self.peers) - 2):
                 self.peers[i].connected_to.append(ip_address)
-            self.peers[-1].local_blockchain = self.blockchain.create_copy(self.blockchain)
+            self.peers[-1].local_blockchain = self.blockchain.create_copy()
 
     def find_connections(self, ip):
         idx = self.connected_ips.index(ip)
