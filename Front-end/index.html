@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Gym Equipment Failure Tracking</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/Front-end/css/app.css" />
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Gym Equipment Failure Tracker</span>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Create Asset
+    </button>
+  </nav>
+  <br />
+  <div class="container">
+    <h2 class="display-4" style="
+    color: #218f76;">
+      <div id="loading-div">
+        <div class="inner-div">
+          <div id="count"></div>
+        </div>
+      </div>
+    </h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Batch No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Manufacturer</th>
+          <th scope="col">Buyer</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <!-- code for modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Create a new asset
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="form-group">
+                <input type="text" id="batchNo" class="form-control" placeholder="Batch Number" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="name" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="manufacturer" class="form-control" placeholder="Manufacturer" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="buyer" class="form-control" placeholder="Buyer" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="quantity" class="form-control" placeholder="Quantity" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="status" class="form-control" placeholder="Current Status" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="handleClick()">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

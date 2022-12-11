@@ -1,7 +1,6 @@
 import hashlib
 import math
 
-
 class HashNode:
     def __init__(self, node_hash):
         self.node_hash = node_hash
